@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "14.15.1"
+  },
   "dependencies": {
     "@tensorflow/tfjs": "^3.3.0",
     "@tensorflow/tfjs-node": "^3.3.0",
