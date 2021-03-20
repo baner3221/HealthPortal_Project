@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(session({
-  secret: "MySecretString",
+  secret: "MySecretKey",
   resave: false,
   saveUninitialized: false,
 }));
@@ -47,7 +47,7 @@ async function load_model() {
 const model = load_model();
 
 
-mongoose.connect("mongodb://localhost:27017/HealthDB", {useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-neelanjan:neelanjan12@cluster0.yq9iq.mongodb.net/HealthDB?retryWrites=true&w=majority", {useNewUrlParser:true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const detailsSchema = new mongoose.Schema({
@@ -382,6 +382,6 @@ app.post("/patient/dashboard", function(req, res){
   })
 });
 
-app.listen(3000, function(req, res){
+app.listen(process.env.PORT||3000, function(req, res){
   console.log("Server started on port 3000.")
 });
