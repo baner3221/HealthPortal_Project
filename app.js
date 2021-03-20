@@ -361,7 +361,7 @@ app.post("/patient/dashboard", function(req, res){
         const prediction = res1.predict(predImage).dataSync();
         console.log(prediction[0]);
         console.log(req);
-        if(prediction[0]>=0.5){
+        if(prediction[0]>=0.25){
           Details.updateOne({username: req.user.username}, {disease: "COVID-19", status: "Threatened", xraystatus: "Positive"}, function(err){
             const resS = "You have a high chance of having COVID-19 as per your xray. Please consult a doctor immediately.";
             res.render("xrayres",{title: "Xray", userName: req.user.username, loggedIn: true, resString: resS, doctor: false});
